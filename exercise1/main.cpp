@@ -35,7 +35,7 @@ void shipTester()
 		
 		if (_kbhit())
 		{
-			keyPressed = _getch();
+			keyPressed = tolower( _getch());
 			if (keyPressed == (int)GameConfig::eKeys::ESC) {
 				break;
 			}
