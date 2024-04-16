@@ -24,14 +24,12 @@ void shipTester()
 {
 	drawBorderSomewhere();
 	int x = GameConfig::MIN_X, y = GameConfig::MIN_Y;
-	Ship s;
-	Point head;
-	head.init(2, 2);
-	s.init(head, '#', 2);
+	Ship ship[2];
+	ship[0].init(x, y, '#', 4);
+	ship[1].init(x+4, y+4, '#', 2);
 
-
-
-	int keyPressed = 0; 
+	int select = 0;
+	int keyPressed = (int)GameConfig::eKeys::BIGSHIP;
 	while (true)
 	{
 		
@@ -41,8 +39,18 @@ void shipTester()
 			if (keyPressed == (int)GameConfig::eKeys::ESC) {
 				break;
 			}
+			if (keyPressed == (int)GameConfig::eKeys::BIGSHIP) {
+				if (ship[select].getSize() == GameConfig::SMALL_SHIP_SIZE) {
+					select = 0;
+				}
+			}
+			if (keyPressed == (int)GameConfig::eKeys::SMALLSHIP) {
+				if (ship[select].getSize() == GameConfig::BIG_SHIP_SIZE) {
+					select = 1;
+				}
+			}
 		}
-		s.move((GameConfig::eKeys)keyPressed);
+		ship[select].move((GameConfig::eKeys)keyPressed);
 		Sleep(500);
 	}
 

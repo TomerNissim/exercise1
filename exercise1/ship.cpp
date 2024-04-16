@@ -1,16 +1,15 @@
 #include "ship.h"
 
 
-void Ship::init(const Point& head, char ch, int size)
+void Ship::init(int x, int y, char ch, int size)
 {
 	this->ch = ch;
 	this->size = size;
-	body[0] = head;
-	body[0].draw(ch);
-	for (int i = 1; i < size; i++)
+	Point point;
+	for (int i = 0; i < size; i++)
 	{
-		body[i] = body[i - 1];
-		body[i].move((GameConfig::eKeys)0);
+		point.init(x + (int(i % 2)), y + (int)(i / 2));
+		body[i] = point;
 		body[i].draw(ch);
 	}
 }

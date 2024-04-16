@@ -10,5 +10,9 @@ public:
 
 	static constexpr int MIN_X = 10;
 	static constexpr int MIN_Y = 3;
+
+	static constexpr int BIG_SHIP_SIZE = 4;
+	static constexpr int SMALL_SHIP_SIZE = 2;
+
 };
 #endif

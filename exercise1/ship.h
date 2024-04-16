@@ -9,6 +9,8 @@ private:
 	int size;
 
 public:
-	void init(const Point& head, char ch, int size);
+	void init(int x, int y, char ch, int size);
 	void move(GameConfig::eKeys direction);
+	int getSize() { return size; };
+
 };
