@@ -38,7 +38,16 @@ void Point::move(GameConfig::eKeys key)
 		diff_x = 0;
 		diff_y = 1;
 		break;
+	case GameConfig::eKeys::SMALLSHIP:
+		diff_x = 0;
+		diff_y = 0;
+		break;
+	case GameConfig::eKeys::BIGSHIP:
+		diff_x = 0;
+		diff_y = 0;
+		break;
 	}
+
 
 	x += diff_x;
 	if (x > GameConfig::GAME_WIDTH)

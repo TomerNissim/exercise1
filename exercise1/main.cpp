@@ -11,33 +11,36 @@ using namespace std;
 
 void drawBorderSomewhere();
 
-void snakeTester();
+void shipTester();
 
 int main() {
 	drawBorderSomewhere();
 
-	snakeTester();
+	shipTester();
 
 }
 
-void snakeTester()
+void shipTester()
 {
 	drawBorderSomewhere();
 	int x = GameConfig::MIN_X, y = GameConfig::MIN_Y;
 	Ship s;
 	Point head;
 	head.init(2, 2);
-	s.init(head, '#', 3);
+	s.init(head, '#', 2);
 
 
+
+	int keyPressed = 0; 
 	while (true)
 	{
-		int keyPressed = 0;
+		
 		if (_kbhit())
 		{
 			keyPressed = _getch();
-			if (keyPressed == (int)GameConfig::eKeys::ESC)
+			if (keyPressed == (int)GameConfig::eKeys::ESC) {
 				break;
+			}
 		}
 		s.move((GameConfig::eKeys)keyPressed);
 		Sleep(500);
