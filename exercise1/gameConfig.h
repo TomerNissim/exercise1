@@ -5,6 +5,8 @@ class GameConfig
 {
 public:
 	enum class eKeys { LEFT = 'a', RIGHT = 'd', UP = 'w', DOWN = 'x',BIGSHIP = 'b', SMALLSHIP = 's', ESC = 27 };
+	enum class eGameObj { WALL = '&', SMALLBLOCK = 2 , BIGBLOCK = 4, EMPTY = 0 };
+
 	static constexpr int GAME_WIDTH = 20;
 	static constexpr int GAME_HEIGHT = 20;
 

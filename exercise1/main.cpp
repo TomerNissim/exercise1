@@ -11,23 +11,22 @@ using namespace std;
 
 void drawBorderSomewhere();
 
-void shipTester();
+void runGame();
 
 int main() {
-	drawBorderSomewhere();
-
-	shipTester();
+	runGame();
 
 }
 
-void shipTester()
+void runGame()
 {
 	drawBorderSomewhere();
 	int x = GameConfig::MIN_X, y = GameConfig::MIN_Y;
-	Ship ship[2];
-	ship[0].init(x, y, '#', 4);
-	ship[1].init(x+4, y+4, '#', 2);
+	Ship shipArr[2];
+	shipArr[0].init(x, y, '#', 4);
+	shipArr[1].init(x + 4, y + 4, '#', 2);
 
+	GameConfig::eGameObj checkMove = GameConfig::eGameObj::EMPTY;
 	int select = 0;
 	int keyPressed = (int)GameConfig::eKeys::BIGSHIP;
 	while (true)
@@ -40,17 +39,22 @@ void shipTester()
 				break;
 			}
 			if (keyPressed == (int)GameConfig::eKeys::BIGSHIP) {
-				if (ship[select].getSize() == GameConfig::SMALL_SHIP_SIZE) {
+				if (shipArr[select].getSize() == GameConfig::SMALL_SHIP_SIZE) {
 					select = 0;
 				}
 			}
 			if (keyPressed == (int)GameConfig::eKeys::SMALLSHIP) {
-				if (ship[select].getSize() == GameConfig::BIG_SHIP_SIZE) {
+				if (shipArr[select].getSize() == GameConfig::BIG_SHIP_SIZE) {
 					select = 1;
 				}
 			}
 		}
-		ship[select].move((GameConfig::eKeys)keyPressed);
+		shipArr[select].setDirection((GameConfig::eKeys)keyPressed);
+		checkMove = shipArr[select].checkMove();
+		if (checkMove == GameConfig::eGameObj::SMALLBLOCK || checkMove == GameConfig::eGameObj::BIGBLOCK) {
+			//MOVE BLOCK IMPLEMENT
+		}
+		shipArr[select].move((GameConfig::eKeys)keyPressed);
 		Sleep(500);
 	}
 

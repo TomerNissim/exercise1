@@ -13,4 +13,7 @@ public:
 	void init(int x, int y);
 	void draw(char ch);
 	void move(GameConfig::eKeys key);
+	int getX() { return x; };
+	int getY() { return y; };
+
 };
